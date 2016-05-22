@@ -1,13 +1,27 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>CheckNewMember</title>
+    <title>登録情報確認</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 
-<a href="/newMember">会員登録</a>
-<a href="/completeNewMember">登録完了</a>
+<table>
+<tr th:each = "member : ${memberModel}">
+	<td th:text = "${member.member_name}"></td>
+	<td th:text = "${member.member_mail}"></td>
+	<td th:text = "${member.member_pass}"></td>
+</tr>
+</table>
+
+<form method = "post" action = "/completeNewMember" th:object = "${memberModel}">
+<input type ="hidden" name="member_name" th:value = "${memberModel.member_name}" />
+<input type ="hidden" name="member_mail" th:value = "${memberModel.member_mail}" />
+<input type ="hidden" name="member_pass" th:value = "${memberModel.member_pass}" />
+<input type = "submit" value = "登録完了" />
+</form>
+<a href="/registerNewMember">会員登録</a>
+
 
 </body>
 </html>

@@ -4,3 +4,4 @@ git - github
 springboot3.7.5
 maven
 thymeleaf
+postgres9.5.3
